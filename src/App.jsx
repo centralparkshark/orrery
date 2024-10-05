@@ -1,4 +1,4 @@
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Stars } from '@react-three/drei'
 import './App.css'
 import NEO from './components/NEO'
 import Earth from './components/Earth'
@@ -8,7 +8,11 @@ import { asteroids } from './assets/asteroids'
 
 function App() {
 
-
+  const [showOrbitLines, setShowOrbitLines] = useState(true);
+  
+  const toggleOrbitLines = () => {
+    setShowOrbitLines(prev => !prev);
+  };
   
 
   return (
@@ -21,19 +25,25 @@ function App() {
         far: 500, 
         position: [0, 0, 20] 
       }}
+      fog={{ color: '#000000', near: 50, far: 300 }} // Space fog settings
       >
         <ambientLight intensity={0.2} /> 
-        <directionalLight color="white" position={[10, 5, 5]} intensity={1}/>
+        <directionalLight color="white" position={[10, 10, 10]} intensity={1}/>
+        
+        <Stars radius={100} depth={50} count={1000} factor={.3} />
         <Earth />
         <group>
           {asteroids.map((neo) => {
-            return <NEO key={neo.spkid} info={neo}/>;
+            return <NEO key={neo.spkid} info={neo} showOrbitLines={showOrbitLines}/>;
           })}
         </group>
         
         <OrbitControls></OrbitControls>
       </Canvas>
-      <div className="card">NEO Orrery</div>
+      <div className="card">
+        <div>Near Earth Objects Orrery</div>
+        <input type="button" value="Toggle Orbit Lines" onClick={toggleOrbitLines}/>
+      </div>
     </>
   )
 }

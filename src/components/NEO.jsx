@@ -2,7 +2,7 @@ import OrbitLine from "./OrbitLine";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 
-export default function NEO({ info }) {
+export default function NEO({ info, showOrbitLines }) {
   const neoRef = useRef(); // Reference to the NEO object for animating it
   // console.log(info)
   if (!info) {
@@ -64,6 +64,7 @@ export default function NEO({ info }) {
         inclination={inclination}
         argumentOfPeriapsis={argumentOfPeriapsis}
         longitudeOfAscendingNode={longitudeOfAscendingNode}
+        visible = {showOrbitLines}
       />
     </>
   )

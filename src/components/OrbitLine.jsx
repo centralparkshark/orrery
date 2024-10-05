@@ -1,25 +1,7 @@
-// export default function OrbitLine({radius, e}) {
-
-//       // Create the orbit path
-//     const points = 100; // Number of points to represent the orbit
-//     const orbitPoints = new Float32Array(points * 3);
-//     for (let i = 0; i < points; i++) {
-//         const angle = (i / points) * Math.PI * 2; // Full circle
-//         const r = radius * (1 - e * Math.cos(angle)); // Radius based on eccentricity
-//         orbitPoints[i * 3] = r * Math.cos(angle); // x position
-//         orbitPoints[i * 3 + 1] = r * Math.sin(angle) * Math.sin(i); // y position based on inclination
-//         orbitPoints[i * 3 + 2] = r * Math.sin(angle); // z position
-//     }
-
-//     return (
-//         <Line points={orbitPoints} color="black" lineWidth={2}/>   
-//     )
-// }
-
 import { useMemo } from 'react';
 import { Line } from '@react-three/drei'; // Line component from drei for easier line rendering
 
-const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriapsis, longitudeOfAscendingNode }) => {
+const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriapsis, longitudeOfAscendingNode, visible }) => {
   // Memoize the points to avoid recalculating on every render
   const points = useMemo(() => {
     const numPoints = 100; // Number of points to calculate
@@ -40,7 +22,7 @@ const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriaps
     return calculatedPoints;
   }, [semiMajorAxis, eccentricity, inclination, argumentOfPeriapsis, longitudeOfAscendingNode]);
 
-  return (
+  return visible ? (
     <Line 
       points={points}  // Pass the points to the Line component
       color="black"      // Color of the orbit path
@@ -48,7 +30,7 @@ const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriaps
       transparent
       opacity={.25}
     />
-  );
+  ) : null;
 };
 
 export default OrbitLine;
