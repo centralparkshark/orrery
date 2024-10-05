@@ -3,27 +3,13 @@ import './App.css'
 import NEO from './components/NEO'
 import Earth from './components/Earth'
 import { useRef, useState, useEffect } from 'react'
-import axios from 'axios'
-
-// const URL = 'https://data.nasa.gov/resource/b67r-rgxc.json'
-
 import { Canvas } from '@react-three/fiber'
+import { asteroids } from './assets/asteroids'
 
 function App() {
-    const [neos, setNeos] = useState([]);
+
+
   
-    useEffect(() => {
-      const fetchNEOs = async () => {
-        try {
-          const response = await axios.get('https://data.nasa.gov/resource/b67r-rgxc.json');
-          setNeos(response.data);
-        } catch (error) {
-          console.error('Error fetching NEOs:', error);
-        }
-      };
-  
-      fetchNEOs();
-    }, []);
 
   return (
     <>
@@ -40,33 +26,17 @@ function App() {
         <directionalLight color="white" position={[10, 5, 5]} intensity={1}/>
         <Earth />
         <group>
-          <NEO></NEO>
-          {neos.map((neo) => {
-            return <NEO key={neo.object} info={neo}/>;
+          {asteroids.map((neo) => {
+            return <NEO key={neo.spkid} info={neo}/>;
           })}
         </group>
         
         <OrbitControls></OrbitControls>
       </Canvas>
-
+      <div className="card">NEO Orrery</div>
     </>
   )
 }
 
 export default App
 
-
-// Example Object:
-// e: "0.6652319399"
-// epoch_tdb: "43773"
-// i_deg: "5.947329619"
-// moid_au: "0.13492"
-// node_deg: "132.2535138"
-// object: "D/1978 R1 (Haneda-Campos)"
-// object_name: "D/1978 R1 (Haneda-Campos)"
-// p_yr: "5.97"
-// q_au_1: "1.101417705"
-// q_au_2: "5.48"
-// ref: "7"
-// tp_tdb: "2443790.992"
-// w_deg: "240.4622187"
