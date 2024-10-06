@@ -20,7 +20,7 @@ export default function InfoDisplay(props) {
             {info ? 
             <>
                 <h1>{info.name}</h1>
-                <p>{info.full_name.trim()}</p>
+                <p className="fullName">{info.full_name.trim()}</p>
                 <p>First Observed: {info.first_obs}</p>
                 <p>Last Observed: {info.last_obs}</p>
                 <p>Diameter: {info.diameter} km</p>
