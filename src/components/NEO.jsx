@@ -70,6 +70,7 @@ export default function NEO({ info, showOrbitLines, onPointerDown, isSelected })
         argumentOfPeriapsis={argumentOfPeriapsis}
         longitudeOfAscendingNode={longitudeOfAscendingNode}
         visible = {showOrbitLines}
+        color = {isSelected ? "orange" : "black"}
       />
     </>
   )

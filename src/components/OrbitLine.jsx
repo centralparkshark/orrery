@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Line } from '@react-three/drei'; // Line component from drei for easier line rendering
 
-const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriapsis, longitudeOfAscendingNode, visible }) => {
+const OrbitLine = ({ color, semiMajorAxis, eccentricity, inclination, argumentOfPeriapsis, longitudeOfAscendingNode, visible }) => {
   // Memoize the points to avoid recalculating on every render
   const points = useMemo(() => {
     const numPoints = 100; // Number of points to calculate
@@ -25,7 +25,7 @@ const OrbitLine = ({ semiMajorAxis, eccentricity, inclination, argumentOfPeriaps
   return visible ? (
     <Line 
       points={points}  // Pass the points to the Line component
-      color="black"      // Color of the orbit path
+      color={color}      // Color of the orbit path
       lineWidth={1}    // Line width
       transparent
       opacity={.25}
