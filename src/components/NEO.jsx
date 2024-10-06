@@ -12,7 +12,7 @@ export default function NEO({ info, showOrbitLines, onPointerDown, isSelected })
     return null;
   }
 
-  const { a, e, i, w, om, n, name } = info;
+  const { a, e, i, w, om, n, name, diameter } = info;
 
   const AU_SCALE = 50 // 1 AU in meters
 
@@ -54,13 +54,18 @@ export default function NEO({ info, showOrbitLines, onPointerDown, isSelected })
     neoRef.current.position.set(x, y, z);
   });
 
+  let radius = diameter / 2 / 5; // scale for asteroids
+  if (radius < .5) {
+    radius = .5 // makes sure the tiny ones are still visible
+  }
+
   return (
     <>
       <mesh ref={neoRef}
         onPointerDown={onPointerDown}
       >
        <Billboard follow={true} lockX={false} lockY={false} lockZ={true} position={0, 0, 1}><Text fontSize={1}>{name ? name : null}</Text></Billboard>
-        <sphereGeometry args={[.5, 32, 32]} />
+        <sphereGeometry args={[radius, 32, 32]} />
         <meshStandardMaterial color={isSelected ? "yellow" : "white"} />
       </mesh>
       <OrbitLine

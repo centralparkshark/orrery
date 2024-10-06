@@ -66,11 +66,16 @@ table {
   table-layout: fixed;
   text-align: center;
   border: #25334b 1px solid;
-  cursor: pointer;
 } 
 
 th {
   font-size: 1rem;
+  position: relative;
+}
+
+th:hover {
+  background-color: #3b4961;
+  cursor: pointer;
 }
 
 td {
@@ -80,4 +85,16 @@ td {
 th, td {
   padding: 4px;  
   border: #25334b 1px solid;
+}
+
+.variables {
+  position: absolute;
+  background-color: #25334b;
+  width: 500%;
+  height: fit-content;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 2rem;
 }
