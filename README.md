@@ -1,32 +1,21 @@
+# Project Title: NEO Orrery of Named Asteroids
 
+## Project Overview: 
+The Near-Earth Objects (NEO) Orrery is a web application developed using React and Three.js Fiber to visualize and provide detailed information about near-Earth asteroids and their orbits. The application creates an interactive 3D space model where users can explore various NEOs, observe their paths, and learn about their orbital characteristics, including their semi-major axes, eccentricities, inclinations, and more.
 
-## From Space Apps Challenge
-    Teams with intermediate programming skills may create a static orrery and teams with more advanced programming skills may create a dynamic orrery.
-        A team can use free open-source 3D graphics code libraries to produce a web app that generates an interactive static orrery.
-        Making a dynamic orrery requires an orbital propagator.
-    NASA data sets containing the orbital trajectories of the planets, NEOs, NECs, and PHAs are available (see Resources).
-    The small body database (see Resources) provides Keplerian parameters for NEOs and PHAs; the user interface provides the following constraints to limit the amount of output data:
-        Limit by Object Kind/Group - click the numbered option for numbered state then click the checkbox to exclude comet fragments.
-        Limit By Orbit Class - select Apollo to limit the output to NEOs that cross Earth’s orbit.
-        Custom Object/Orbit Constraints - skip this option unless you want to mathematically limit by orbit parameters.
-        Output Selection Controls - scroll down the available fields and select the Keplerian parameters, e.g., e, a, i, peri, M, n, etc…
-        Click the Get Results button then click Download CSV Format to get the data into Excel.
-    The Resources section includes a link to a paper that may serve as a source of inspiration for potential use cases, functions, and design features of a web app that presents an interactive orrery. The following are examples of notional features your orrery could include:
-        Labels for planets, NEOs, NECs, and PHAs.
-        Colored orbital trajectories of the celestial bodies.
-        User interface controls to turn labels and orbital trajectories on or off.
-        Speed control widget for a dynamic orrery.
-        Timeline control to display positions of celestial bodies for specified data.
-        Widgets to control the point of view or to zoom in and out.
-        First-person control for the point of view of flying among the celestial bodies.
-        Exterior and interior views of a spaceship flying amongst the celestial bodies in the orrery.
-        User interface controls to limit the number of NEOs, NECs, or PHAs to display in the orrery.
-        File upload function and control for other orbital parameter data sets.
-    Several Artificial Intelligence (AI) applications are great at code generation; consider applying the knowledge you’ve gained about Keplerian parameters and orbital propagators to prompt an AI code generator to produce a web app that updates the position of celestial objects.
-    As part of your project submission, don’t forget to provide a link to a deployed web page that has an embedded web app with an interactive orrery.
-    Consider testing your web app in more than one web browser because the judges may not use the same web browser used by your team.
-    Don’t forget to cite sources for code libraries, web app utilities, data sets, Application Programming Interfaces, and tutorials that provide example source code.
-    A section of the project submission addresses artificial intelligence; please fill out that section if you use an AI application to generate source code by explaining the prompts that you wrote.
+## Development Highlights:
+- Interactive 3D Visualization: Leveraging Three.js Fiber, the application provides an engaging visualization of the solar system with Earth at the center and NEOs represented as dynamic objects.
+- User Interactivity: Users can click on NEOs to receive information, such as their names, orbital elements, and historical observational data. The application includes features like changing colors upon selection to enhance user experience.
+- Data Integration: The project utilizes data from [NASA's Small-Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_query.html), allowing users to access information about NEOs and their characteristics.
+- User-Friendly Interface: The application features a clean interface that allows users to toggle visibility for orbital lines.
 
-# 
-NEO Asteroids with IAU Names from [Small-Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_query.html)
+## Addressing the Challenge:
+The project addresses the challenge of public awareness and education regarding near-Earth objects. By providing an intuitive platform for users to visualize and learn about these celestial bodies, it aims to enhance understanding of their characteristics and significance in space exploration. The interactive nature of the application fosters engagement, making complex astronomical concepts accessible to a broader audience.
+
+Overall, the NEO Orrery not only enhances public knowledge of near-Earth objects but also contributes to the ongoing conversation about space exploration, making it a significant addition to educational and scientific resources.
+
+## Resources
+- NEO Asteroids with IAU Names from [Small-Body Database](https://ssd.jpl.nasa.gov/tools/sbdb_query.html), downloaded data located in src>assets>asteroids.js
+- Orbital Code in R from [Elliptical Orbit Design - R Markdown](https://nasa.github.io/mission-viz/RMarkdown/Elliptical_Orbit_Design.html)
+- [Three.js Documentation](https://threejs.org/)
+- [Drei Helper Functions for Three.js Fiber Documentation](https://drei.docs.pmnd.rs/)
