@@ -48,3 +48,36 @@ input[type="button"] {
   width: fit-content;
   cursor: pointer;
 }
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  border: #25334b 1px solid;
+  cursor: pointer;
+} 
+
+th {
+  font-size: 1rem;
+}
+
+td {
+  font-size: .8rem;
+}
+
+th, td {
+  padding: 4px;  
+  border: #25334b 1px solid;
+}

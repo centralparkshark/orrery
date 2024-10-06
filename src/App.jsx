@@ -5,6 +5,7 @@ import Earth from './components/Earth'
 import { useRef, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { asteroids } from './assets/asteroids'
+import InfoDisplay from './components/InfoDisplay'
 
 function App() {
 
@@ -50,9 +51,8 @@ function App() {
         <OrbitControls></OrbitControls>
       </Canvas>
       <div className="card">
-        <div>Near Earth Objects Orrery</div>
+        <InfoDisplay info={clickedInfo}></InfoDisplay>
         <input type="button" value="Toggle Orbit Lines" onClick={toggleOrbitLines}/>
-        {clickedInfo ? <div>{clickedInfo.name}</div> : ''}
       </div>
     </>
   )
