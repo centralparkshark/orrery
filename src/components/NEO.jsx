@@ -1,3 +1,4 @@
+import { Billboard, Text } from "@react-three/drei";
 import OrbitLine from "./OrbitLine";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
@@ -10,7 +11,7 @@ export default function NEO({ info, showOrbitLines }) {
     return null;
   }
 
-  const { a, e, i, w, om, n } = info;
+  const { a, e, i, w, om, n, name } = info;
 
   const AU_SCALE = 50 // 1 AU in meters
 
@@ -55,6 +56,7 @@ export default function NEO({ info, showOrbitLines }) {
   return (
     <>
       <mesh ref={neoRef}>
+       <Billboard follow={true} lockX={false} lockY={false} lockZ={true} position={0, 0, 1}><Text fontSize={1}>{name ? name : null}</Text></Billboard>
         <sphereGeometry args={[.5, 32, 32]} />
         <meshStandardMaterial color="white" />
       </mesh>
