@@ -9,10 +9,15 @@ import { asteroids } from './assets/asteroids'
 function App() {
 
   const [showOrbitLines, setShowOrbitLines] = useState(true);
+  const [clickedInfo, setClickedInfo] = useState(null)
   
   const toggleOrbitLines = () => {
     setShowOrbitLines(prev => !prev);
   };
+
+  function handleClick(info) {
+    setClickedInfo(info)
+  }
   
 
   return (
@@ -25,7 +30,6 @@ function App() {
         far: 500, 
         position: [0, 0, 20] 
       }}
-      fog={{ color: '#000000', near: 50, far: 300 }} // Space fog settings
       >
         <ambientLight intensity={0.2} /> 
         <directionalLight color="white" position={[10, 10, 10]} intensity={1}/>
@@ -34,7 +38,12 @@ function App() {
         <Earth />
         <group>
           {asteroids.map((neo) => {
-            return <NEO key={neo.spkid} info={neo} showOrbitLines={showOrbitLines}/>;
+            return <NEO 
+            key={neo.spkid} 
+            info={neo} 
+            showOrbitLines={showOrbitLines} 
+            onPointerDown={() => handleClick(neo)}
+            isSelected={clickedInfo && clickedInfo.spkid === neo.spkid} />;
           })}
         </group>
         
@@ -43,6 +52,7 @@ function App() {
       <div className="card">
         <div>Near Earth Objects Orrery</div>
         <input type="button" value="Toggle Orbit Lines" onClick={toggleOrbitLines}/>
+        {clickedInfo ? <div>{clickedInfo.name}</div> : ''}
       </div>
     </>
   )

@@ -2,8 +2,9 @@ import { Billboard, Text } from "@react-three/drei";
 import OrbitLine from "./OrbitLine";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+import { useState } from "react";
 
-export default function NEO({ info, showOrbitLines }) {
+export default function NEO({ info, showOrbitLines, onPointerDown, isSelected }) {
   const neoRef = useRef(); // Reference to the NEO object for animating it
   // console.log(info)
   if (!info) {
@@ -55,10 +56,12 @@ export default function NEO({ info, showOrbitLines }) {
 
   return (
     <>
-      <mesh ref={neoRef}>
+      <mesh ref={neoRef}
+        onPointerDown={onPointerDown}
+      >
        <Billboard follow={true} lockX={false} lockY={false} lockZ={true} position={0, 0, 1}><Text fontSize={1}>{name ? name : null}</Text></Billboard>
         <sphereGeometry args={[.5, 32, 32]} />
-        <meshStandardMaterial color="white" />
+        <meshStandardMaterial color={isSelected ? "yellow" : "white"} />
       </mesh>
       <OrbitLine
         semiMajorAxis={semiMajorAxis}
